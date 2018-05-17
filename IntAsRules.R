@@ -79,8 +79,11 @@ top.confidence
 inspect(head(top.confidence, 10))
         
 #Plot top 10 confidence rules
-
+png(filename="Plot.png")
 plot(top.confidence)
+dev.off()
+
+
 
 ## end your R code and logic 
 
