@@ -64,7 +64,7 @@ table(compTable)
 #240 cases Detractor and classified as Detractor
 #5607 cases not Detractor and classified as not Detractor
 #73 cases not Detractor but classified as Detractor
-
+#Accuracy is 1- (473+73)/6393 = 0.9146 or 91.46%
 
 #Part C:2
 
@@ -105,7 +105,7 @@ table(compTable)
 #176 cases Detractor and classified as Detractor
 #3569 cases not Detractor and classified as not Detractor
 #50 cases not Detractor but classified as Detractor
-
+#Accuracy is 1- (238+50)/4033 = 0.9286 or 92.86%
 
 
 
