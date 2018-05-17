@@ -80,9 +80,9 @@ x <- data.frame(Condition_Hotel_H=c(4))
 LTR1 <- predict(LinMod, x)
 LTR1
 #Creating a dataframe for Hotel Condition =4 and Staff Cared=4
-x <- data.frame(Condition_Hotel_H=c(4), Staff_Cared_H=c(4))
+x2 <- data.frame(Condition_Hotel_H=c(4), Staff_Cared_H=c(4))
 #Predicting LTR
-LTR2 <- predict(LinMod2, x)
+LTR2 <- predict(LinMod2, x2)
 LTR2
 
 #Checking whether predicted LTR for the first model is detractor or not
@@ -94,11 +94,7 @@ ifelse(LTR2<7, "Detractor", "Not Detractor")
 
 
 
-
-
-
-
-
+####################################################################
 
 #PPart B: 1
 
