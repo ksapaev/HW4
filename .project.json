@@ -44,6 +44,10 @@
         {
             "source": "data.csv",
             "target": "ModelTest.R"
+        },
+        {
+            "source": "data.csv",
+            "target": "SVM.R"
         }
     ]
 }
