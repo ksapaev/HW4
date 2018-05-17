@@ -58,6 +58,10 @@
         {
             "source": "data.csv",
             "target": "IntAsRules.R"
+        },
+        {
+            "source": "IntAsRules.R",
+            "target": "Plot.png"
         }
     ]
 }
