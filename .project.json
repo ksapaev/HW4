@@ -51,6 +51,10 @@
         {
             "source": "data.csv",
             "target": "SVM.R"
+        },
+        {
+            "source": "data.csv",
+            "target": "IntAsRules.R"
         }
     ]
 }
