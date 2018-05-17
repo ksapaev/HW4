@@ -19,6 +19,9 @@
         },
         {
             "name": "ModelTest.R"
+        },
+        {
+            "name": "SVM.R"
         }
     ],
     "edges": [
