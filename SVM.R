@@ -131,8 +131,27 @@ table(compTable2_1650)
 ###########################################################
 #Part D:
 
+#Sampling 1000 surveys and calculating the percentage of prediction of the first module
+D <- sample(1:dim(testData)[1], 1000, replace=FALSE)
+testModel1 <- function (D) {
+compTable_D <- data.frame(testData[D,59], svmPredict[1,D])
+table(compTable_D)
+}
+
+ModelPercentage <- (1-(testModel1(D)[1,1] + testModel1(D)[2,2])/sum(testModel1()))*100
+ModelPercentage
 
 
+#Sampling 1000 surveys and calculating the percentage of prediction of the second module
+D2 <- sample(1:dim(testData2)[1], 1000, replace=FALSE)
+
+testModel2 <- function (D2) {
+compTable2_D <- data.frame(testData2[D2,59], svmPredict2[1,D2])
+table(compTable2_D)
+}
+
+Model2Percentage <- (1-(testModel2(D2)[1,1] + testModel2(D2)[2,2])/sum(testModel2()))*100
+Model2Percentage 
 
 
 ###########################################################
