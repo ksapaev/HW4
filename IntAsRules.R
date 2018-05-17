@@ -10,6 +10,7 @@ df <- read.csv('data.csv')
 
 ## start writing your R code from here
 library(arules)
+library(arulesViz)
 #Generate Interesting Association Rule using bellow 
 
 summary(df$LENGTH_OF_STAY_C)
