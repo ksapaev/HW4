@@ -9,6 +9,45 @@ df <- read.csv('data.csv')
 ####################################
 
 ## start writing your R code from here
+library(arules)
+#Generate Interesting Association Rule using bellow 
+
+summary(df$LENGTH_OF_STAY_C)
+df$Guest_Country_H
+df$Gender_H
+df$Age_Range_H
+df$GP_Tier
+head(df)
+#Create Dataframe with appropriate columns
+NewDF <- data.frame(df$LENGTH_OF_STAY_C, df$Guest_Country_H,
+df$Gender_H, df$Age_Range_H, df$GP_Tier)
+NewDF
+#patterns <- random.patterns(df$LENGTH_OF_STAY_C = 1000);
+
+#Convert column 1 into a factor
+test1 <- factor(NewDF[ ,1])
+
+NewDF$df.LENGTH_OF_STAY_C <- test1
+
+#View Rules
+ruleset <- apriori(NewDF, parameter =list(support=0.01,confidence=0.5))
+
+summary(ruleset)
+
+#Show the top 10 rules
+
+head(ruleset)
+plot(ruleset)
+
+#Show top 10 rules 
+top10 <- inspect(sort(ruleset) [1:10])
+top10
+
+inspect(ruleset)
+
+#Generate rules that predict if someone will be a detractor
+
+
 
 ## end your R code and logic 
 
