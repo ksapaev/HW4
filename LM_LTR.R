@@ -77,14 +77,19 @@ summary(LinMod2)
 #Creating a dataframe for Hotel Condition =4
 x <- data.frame(Condition_Hotel_H=c(4))
 #Predicting LTR
-predict(LinMod, x)
-
+LTR1 <- predict(LinMod, x)
+LTR1
 #Creating a dataframe for Hotel Condition =4 and Staff Cared=4
 x <- data.frame(Condition_Hotel_H=c(4), Staff_Cared_H=c(4))
 #Predicting LTR
-predict(LinMod2, x)
+LTR2 <- predict(LinMod2, x)
+LTR2
 
+#Checking whether predicted LTR for the first model is detractor or not
+ifelse(LTR1<7, "Detractor", "Not Detractor")
 
+#Checking whether predicted LTR for the second model is detractor or not
+ifelse(LTR2<7, "Detractor", "Not Detractor")
 
 
 ## end your R code and logic 
