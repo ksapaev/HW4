@@ -43,6 +43,11 @@ plot(ruleset)
 top10 <- inspect(sort(ruleset) [1:10])
 top10
 
+inspect(ruleset)
+
+#Generate rules that predict if someone will be a detractor
+
+
 
 ## end your R code and logic 
 
