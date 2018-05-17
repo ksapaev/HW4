@@ -32,10 +32,13 @@ dev.off()
 ##################
 #Part A: 2
 
+# Running linear regression model
+LinMod <- lm(formula=Likelihood_Recommend_H ~ Condition_Hotel_H, data=hc)
+LinMod
 
-
-
-
+sc <- df[!is.na(hc$Staff_Cared_H),] 
+LinMod2 <- lm(formula=Likelihood_Recommend_H ~ Condition_Hotel_H + Staff_Cared_H, data=sc)
+LinMod2
 
 ## end your R code and logic 
 
