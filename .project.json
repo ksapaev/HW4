@@ -28,6 +28,10 @@
         {
             "source": "data.csv",
             "target": "work.R"
+        },
+        {
+            "source": "work.R",
+            "target": "scatter_LTR.png"
         }
     ]
 }
