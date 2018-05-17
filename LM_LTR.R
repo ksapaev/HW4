@@ -36,14 +36,16 @@ dev.off()
 LinMod <- lm(formula=Likelihood_Recommend_H ~ Condition_Hotel_H, data=hc)
 summary(LinMod)
 
+
 #Creating a new dataframe by omitting NAs from 'staff cared' column
-sc <- df[!is.na(hc$Staff_Cared_H),] 
+sc <- hc[!is.na(hc$Staff_Cared_H),] 
 
 # Running linear regression model with 2 independent variables
 LinMod2 <- lm(formula=Likelihood_Recommend_H ~ Condition_Hotel_H + Staff_Cared_H, data=sc)
 summary(LinMod2)
 
-
+# y1 = 0.85196 + 0.87941 * Hotel Condition 
+# y2 = -1.3016 + 0.618915 * Hotel Condition + 0.49269 * Staff Cared
 
 
 
