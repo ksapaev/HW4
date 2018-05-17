@@ -15,6 +15,7 @@ library(arules)
 library(kernlab)
 
 #Part A: 1
+
 #Creating a new dataframe by omitting NAs from 'hotel condition' column
 hc <- df[!is.na(df$Condition_Hotel_H),] 
 
@@ -29,16 +30,67 @@ png(filename="scatter_LTR.png")
 myScatter
 dev.off()
 
+
 ##################
 #Part A: 2
 
-# Running linear regression model
+# Running linear regression model with 1 independent variable
 LinMod <- lm(formula=Likelihood_Recommend_H ~ Condition_Hotel_H, data=hc)
-LinMod
+summary(LinMod)
 
-sc <- df[!is.na(hc$Staff_Cared_H),] 
+
+#plot(hc$Condition_Hotel_H, hc$Likelihood_Recommend_H, xlab = "Hotel Condition", ylab = "Likelihood to Recommend")
+#abline(LinMod)
+
+
+##################
+#Part A: 3
+
+#Creating a new dataframe by omitting NAs from 'staff cared' column
+sc <- hc[!is.na(hc$Staff_Cared_H),] 
+
+# Running linear regression model with 2 independent variables
 LinMod2 <- lm(formula=Likelihood_Recommend_H ~ Condition_Hotel_H + Staff_Cared_H, data=sc)
-LinMod2
+summary(LinMod2)
+
+#plot(sc$Condition_Hotel_H, sc$Likelihood_Recommend_H, xlab = "Hotel Condition", ylab = "Likelihood to Recommend")
+#abline(LinMod2)
+
+
+##################
+#Part A: 4
+
+# R2 for the first model is 0.5009
+# R2 for the second model is 0.5743
+#Linear models look like:
+# y1 = 0.85196 + 0.87941 * Hotel Condition 
+# y2 = -1.3016 + 0.618915 * Hotel Condition + 0.49269 * Staff Cared
+
+#In terms of variations that models explain I prefer second model.
+#The second model explains more variations of Likelihood to recommend.
+#Coefficients of the second model are statistically significant.
+
+
+##################
+#Part A: 5
+
+#Creating a dataframe for Hotel Condition =4
+x <- data.frame(Condition_Hotel_H=c(4))
+#Predicting LTR
+LTR1 <- predict(LinMod, x)
+LTR1
+#Creating a dataframe for Hotel Condition =4 and Staff Cared=4
+x <- data.frame(Condition_Hotel_H=c(4), Staff_Cared_H=c(4))
+#Predicting LTR
+LTR2 <- predict(LinMod2, x)
+LTR2
+
+#Checking whether predicted LTR for the first model is detractor or not
+ifelse(LTR1<7, "Detractor", "Not Detractor")
+
+#Checking whether predicted LTR for the second model is detractor or not
+ifelse(LTR2<7, "Detractor", "Not Detractor")
+
 
 ## end your R code and logic 
 
