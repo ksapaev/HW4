@@ -17,15 +17,20 @@ library(kernlab)
 
 ####################
 
-print(summary(LinMod))
+#PPart B: 1
 
+#Cleaning the data
+hc <- df[!is.na(df$Condition_Hotel_H),] 
+sc <- hc[!is.na(hc$Staff_Cared_H),] 
 #Create dataframe of just the 10th row
 test <- sc[ 10, ]
 test
 
+LinMod <- lm(formula=Likelihood_Recommend_H ~ Condition_Hotel_H, data=hc)
+LinMod2 <- lm(formula=Likelihood_Recommend_H ~ Condition_Hotel_H + Staff_Cared_H, data=sc)
+
 #Test/predict the dataframe
 predict(LinMod, test, type="response")
-
 
 predict(LinMod2, test, type="response")
 
@@ -63,18 +68,7 @@ Act_LTR
 
 #Function that takes into account all these Vectors, have to use 
 
-#Predict LTR based on condition, staff care and the model
-#Then find out how many of the predictions were correct 
-#Creating a dataframe for Hotel Condition =4
-x <- data.frame(Condition_Hotel_H=c(4))
-#Predicting LTR
-LTR1 <- predict(LinMod, x)
-LTR1
-#Creating a dataframe for Hotel Condition =4 and Staff Cared=4
-x <- data.frame(Condition_Hotel_H=c(4), Staff_Cared_H=c(4))
-#Predicting LTR
-LTR2 <- predict(LinMod2, x)
-LTR2
+
 
 #Checking whether predicted LTR for the first model is detractor or not
 ifelse(LTR1<7, "Detractor", "Not Detractor")
@@ -93,7 +87,6 @@ df$NPS_Type <- as.character(df$NPS_Type)
 df$NPS_Type[df$NPS_Type != "Detractor"] <- "NotDetractor"
 df$NPS_Type <- as.factor(df$NPS_Type)
 
-ifelse(df$NPS_Type=="Detractor", df$NPS_Type=="Detractor", df$NPS_Type=="NotDetractor" )
 
 #Testing with random sample of 1,000
 
