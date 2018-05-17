@@ -25,7 +25,7 @@ ch$NPS_Type <- as.factor(ch$NPS_Type)
 
 
 #Creating indexes
-randomIndex <- sample(1:dim(df)[1])
+randomIndex <- sample(1:dim(ch)[1])
 summary(randomIndex)
 
 #Setting a cut point
@@ -37,19 +37,19 @@ trainData <- ch[randomIndex[1:cutPoint2_3],]
 str(trainData)
 
 #Creating a test dataframe
-testData <- ch[randomIndex[(cutPoint2_3+1):dim(spam)[1]],]
+testData <- ch[randomIndex[(cutPoint2_3+1):dim(ch)[1]],]
 str(testData)
 
-svmOutput <- ksvm(NPS_Type ~ ., data=trainData, C=7, prob.model=TRUE)
+svmOutput <- ksvm(NPS_Type ~ ., data=trainData, C=40, prob.model=TRUE)
 
 svmOutput
 
-svmPred <- predict(svmOutput, testData, NPS_Type="votes")
+svmPred <- predict(svmOutput, testData, type="votes")
 compTable <- data.frame(testData[,59], svmPred[1,])
 
 table(compTable)
 
-
+str(svmPred)
 
 
 ## end your R code and logic 
