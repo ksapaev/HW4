@@ -55,14 +55,26 @@ NewDF$Likelihood_Recommend_H <- df$Likelihood_Recommend_H
 Detractors <- sum(NewDF$Likelihood_Recommend_H < 7)
 Detractors
 
+NewDF$Detractors <- data.frame(Detractors)
+NewDF$Detractors
 
-top10De <- inspect(head(NewDF$Likelihood_Recommend_H, 10))
+test2 <- factor(NewDF[ ,6])
+
+NewDF$Likelihood_Recommend_H <- test2
+
+#Generate rules
+Det_ruleset <- apriori(NewDF, parameter =list(support=0.01,confidence=0.5))
+summary(Det_ruleset)
+
+#Use inspect to look at generated rules
+
+top10De <- sort(Det_ruleset, 10)
 top10De
 
-ifelse(NewDF=="Detractor", NewDF=="Detractor", NewDF=="NotDetractor" )
+#ifelse(NewDF=="Detractor", NewDF=="Detractor", NewDF=="NotDetractor" )
 
 #Top 10 rules based on confidence of the rule
-top.confidence <- sort(ruleset, decreasing = TRUE, na.last = NA, by = "confidence")
+top.confidence <- sort(Det_ruleset, decreasing = TRUE, na.last = NA, by = "confidence")
 top.confidence
 inspect(head(top.confidence, 10))
         
