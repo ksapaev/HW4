@@ -12,6 +12,7 @@ df <- read.csv('data.csv')
 library(ggplot2)
 library(arules)
 library(kernlab)
+
 #Part C:1
 
 ch <- df[!is.na(df$Condition_Hotel_H),] 
@@ -125,6 +126,13 @@ table(compTable2_1650)
 
 #Predicted result is positive for both models. 1650th survey was Not Detractor.
 #Models find it as NotDetractor.
+
+
+###########################################################
+#Part D:
+
+
+
 
 
 ###########################################################
