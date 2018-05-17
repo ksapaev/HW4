@@ -25,6 +25,9 @@
         },
         {
             "name": "IntAsRules.R"
+        },
+        {
+            "name": "Plot.png"
         }
     ],
     "edges": [
