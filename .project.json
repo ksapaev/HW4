@@ -37,6 +37,10 @@
         {
             "source": "LM_LTR.R",
             "target": "scatter_LTR.png"
+        },
+        {
+            "source": "data.csv",
+            "target": "ModelTest.R"
         }
     ]
 }
