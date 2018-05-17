@@ -29,6 +29,13 @@ png(filename="scatter_LTR.png")
 myScatter
 dev.off()
 
+##################
+#Part A: 2
+
+
+
+
+
 
 ## end your R code and logic 
 
