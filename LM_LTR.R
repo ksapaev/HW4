@@ -32,13 +32,21 @@ dev.off()
 ##################
 #Part A: 2
 
-# Running linear regression model
+# Running linear regression model with 1 independent variable
 LinMod <- lm(formula=Likelihood_Recommend_H ~ Condition_Hotel_H, data=hc)
-LinMod
+summary(LinMod)
 
+#Creating a new dataframe by omitting NAs from 'staff cared' column
 sc <- df[!is.na(hc$Staff_Cared_H),] 
+
+# Running linear regression model with 2 independent variables
 LinMod2 <- lm(formula=Likelihood_Recommend_H ~ Condition_Hotel_H + Staff_Cared_H, data=sc)
-LinMod2
+summary(LinMod2)
+
+
+
+
+
 
 ## end your R code and logic 
 
