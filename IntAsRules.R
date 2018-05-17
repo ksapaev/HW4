@@ -22,7 +22,7 @@ head(df)
 #Create Dataframe with appropriate columns
 NewDF <- data.frame(df$LENGTH_OF_STAY_C, df$Guest_Country_H,
 df$Gender_H, df$Age_Range_H, df$GP_Tier)
-NewDF
+#NewDF
 #patterns <- random.patterns(df$LENGTH_OF_STAY_C = 1000);
 
 #Convert column 1 into a factor
