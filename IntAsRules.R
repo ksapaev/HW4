@@ -9,6 +9,7 @@ df <- read.csv('data.csv')
 ####################################
 
 ## start writing your R code from here
+library(arulesViz)
 library(arules)
 #Generate Interesting Association Rule using bellow 
 
