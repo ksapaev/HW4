@@ -12,14 +12,16 @@ df <- read.csv('data.csv')
 
 #Part C:1
 
+ch <- df[!is.na(df$Condition_Hotel_H),] 
+
 #Checking the structure of NPS_Type
-str(df$NPS_Type)
+str(ch$NPS_Type)
 #Converting as character
-df$NPS_Type <- as.character(df$NPS_Type)
+ch$NPS_Type <- as.character(ch$NPS_Type)
 #Defining Promoters and passives as Not Detractors
-df$NPS_Type[df$NPS_Type != "Detractor"] <- "NotDetractor"
+ch$NPS_Type[ch$NPS_Type != "Detractor"] <- "NotDetractor"
 #Formatting column as factor
-df$NPS_Type <- as.factor(df$NPS_Type)
+ch$NPS_Type <- as.factor(ch$NPS_Type)
 
 
 #Creating indexes
@@ -27,15 +29,15 @@ randomIndex <- sample(1:dim(df)[1])
 summary(randomIndex)
 
 #Setting a cut point
-cutPoint2_3 <- floor(2*dim(df)[1]/3)
+cutPoint2_3 <- floor(2*dim(ch)[1]/3)
 cutPoint2_3
 
 #Creating a train dataframe
-trainData <- df[randomIndex[1:cutPoint2_3],]
+trainData <- ch[randomIndex[1:cutPoint2_3],]
 str(trainData)
 
 #Creating a test dataframe
-testData <- df[randomIndex[(cutPoint2_3+1):dim(spam)[1]],]
+testData <- ch[randomIndex[(cutPoint2_3+1):dim(spam)[1]],]
 str(testData)
 
 
