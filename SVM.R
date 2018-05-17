@@ -40,8 +40,9 @@ str(trainData)
 testData <- ch[randomIndex[(cutPoint2_3+1):dim(spam)[1]],]
 str(testData)
 
+svmOutput <- ksvm(NPS_Type ~ ., data=trainData, C=5, prob.model=TRUE)
 
-
+svmOutput
 ## end your R code and logic 
 
 ####################################
