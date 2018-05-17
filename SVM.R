@@ -40,9 +40,18 @@ str(trainData)
 testData <- ch[randomIndex[(cutPoint2_3+1):dim(spam)[1]],]
 str(testData)
 
-svmOutput <- ksvm(NPS_Type ~ ., data=trainData, C=5, prob.model=TRUE)
+svmOutput <- ksvm(NPS_Type ~ ., data=trainData, C=7, prob.model=TRUE)
 
 svmOutput
+
+svmPred <- predict(svmOutput, testData, NPS_Type="votes")
+compTable <- data.frame(testData[,59], svmPred[1,])
+
+table(compTable)
+
+
+
+
 ## end your R code and logic 
 
 ####################################
