@@ -9,10 +9,17 @@ df <- read.csv('data.csv')
 ####################################
 
 ## start writing your R code from here
-
+library(ggplot2)
+library(arules)
+library(kernlab)
 #Part C:1
 
 ch <- df[!is.na(df$Condition_Hotel_H),] 
+ch <- ch[!is.na(ch$Brand_PL),]
+ch <- ch[!is.na(ch$GP_Tier),]
+ch <- ch[!is.na(ch$Type_PL),]
+
+
 
 #Checking the structure of NPS_Type
 str(ch$NPS_Type)
@@ -41,16 +48,74 @@ testData <- ch[randomIndex[(cutPoint2_3+1):dim(ch)[1]],]
 str(testData)
 length(testData$NPS_Type)
 
-svmOutput <- ksvm(NPS_Type ~ ., data=trainData, kernel="rbfdot", kpar="automatic", C=40, prob.model=TRUE)
+#Running SVM on train data
+svmOut <- ksvm(NPS_Type ~ Condition_Hotel_H+Brand_PL+GP_Tier+Type_PL, data=trainData, kernel="rbfdot", kpar="automatic", C=5, prob.model=TRUE)
 
-svmOutput
+#Predicting SVM for test data
+svmPredict <- predict(svmOut, testData, type="votes")
 
-svmPred <- predict(svmOutput, testData, type="votes")
-compTable <- data.frame(testData[,59], svmPred[1,])
+#Creating a dataframe for prediction
+compTable <- data.frame(testData[,59], svmPredict[1,])
 
+#Showing predicted results in table
 table(compTable)
 
-str(svmPred)
+#473 cases Detractor but classified as not Detractor
+#240 cases Detractor and classified as Detractor
+#5607 cases not Detractor and classified as not Detractor
+#73 cases not Detractor but classified as Detractor
+
+
+#Part C:2
+
+#Cleaning dataframe
+sc <- ch[!is.na(ch$Staff_Cared_H),]
+
+
+#Creating indexes
+randomIndex <- sample(1:dim(sc)[1])
+summary(randomIndex)
+
+#Setting a cut point
+cutPoint2_3 <- floor(2*dim(sc)[1]/3)
+cutPoint2_3
+
+#Creating a train dataframe
+trainData <- sc[randomIndex[1:cutPoint2_3],]
+str(trainData)
+length(trainData$NPS_Type)
+#Creating a test dataframe
+testData <- sc[randomIndex[(cutPoint2_3+1):dim(sc)[1]],]
+str(testData)
+length(testData$NPS_Type)
+
+#Running SVM on train data
+svmOut <- ksvm(NPS_Type ~ Condition_Hotel_H+Staff_Cared_H+Brand_PL+GP_Tier+Type_PL, data=trainData, kernel="rbfdot", kpar="automatic", C=5, prob.model=TRUE)
+
+#Predicting SVM for test data
+svmPredict <- predict(svmOut, testData, type="votes")
+
+#Creating a dataframe for prediction
+compTable <- data.frame(testData[,59], svmPredict[1,])
+
+#Showing predicted results in table
+table(compTable)
+
+#238 cases Detractor but classified as not Detractor
+#176 cases Detractor and classified as Detractor
+#3569 cases not Detractor and classified as not Detractor
+#50 cases not Detractor but classified as Detractor
+
+
+
+
+
+
+
+
+#str(svmOut)
+#str(svmPredict)
+#str(svmPred)
 
 
 ## end your R code and logic 
