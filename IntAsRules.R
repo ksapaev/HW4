@@ -48,6 +48,42 @@ inspect(ruleset)
 #Generate rules that predict if someone will be a detractor
 
 
+#Add LTR Column to detect detractor
+NewDF$Likelihood_Recommend_H <- df$Likelihood_Recommend_H
+
+#Detractors are numbers of 6 or less
+Detractors <- sum(NewDF$Likelihood_Recommend_H < 7)
+Detractors
+
+NewDF$Detractors <- data.frame(Detractors)
+NewDF$Detractors
+
+test2 <- factor(NewDF[ ,6])
+
+NewDF$Likelihood_Recommend_H <- test2
+
+#Generate rules
+Det_ruleset <- apriori(NewDF, parameter =list(support=0.01,confidence=0.5))
+summary(Det_ruleset)
+
+#Use inspect to look at generated rules
+
+top10De <- sort(Det_ruleset, 10)
+top10De
+
+#ifelse(NewDF=="Detractor", NewDF=="Detractor", NewDF=="NotDetractor" )
+
+#Top 10 rules based on confidence of the rule
+top.confidence <- sort(Det_ruleset, decreasing = TRUE, na.last = NA, by = "confidence")
+top.confidence
+inspect(head(top.confidence, 10))
+        
+#Plot top 10 confidence rules
+png(filename="Plot.png")
+plot(top.confidence)
+dev.off()
+
+
 
 ## end your R code and logic 
 
