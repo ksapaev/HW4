@@ -9,7 +9,7 @@ df <- read.csv('raw_data.csv')
 ####################################
 
 ## start writing your R code from here
-
+df <- df[!is.na(df$Likelihood_Recommend_H),] 
 ## end your R code and logic 
 
 ####################################
