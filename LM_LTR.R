@@ -74,6 +74,17 @@ summary(LinMod2)
 ##################
 #Part A: 5
 
+#Creating a dataframe for Hotel Condition =4
+x <- data.frame(Condition_Hotel_H=c(4))
+#Predicting LTR
+predict(LinMod, x)
+
+#Creating a dataframe for Hotel Condition =4 and Staff Cared=4
+x <- data.frame(Condition_Hotel_H=c(4), Staff_Cared_H=c(4))
+#Predicting LTR
+predict(LinMod2, x)
+
+
 
 
 ## end your R code and logic 
