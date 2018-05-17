@@ -9,8 +9,8 @@ df <- read.csv('data.csv')
 ####################################
 
 ## start writing your R code from here
-library(arules)
 library(arulesViz)
+library(arules)
 #Generate Interesting Association Rule using bellow 
 
 summary(df$LENGTH_OF_STAY_C)
@@ -22,7 +22,7 @@ head(df)
 #Create Dataframe with appropriate columns
 NewDF <- data.frame(df$LENGTH_OF_STAY_C, df$Guest_Country_H,
 df$Gender_H, df$Age_Range_H, df$GP_Tier)
-NewDF
+#NewDF
 #patterns <- random.patterns(df$LENGTH_OF_STAY_C = 1000);
 
 #Convert column 1 into a factor
@@ -53,12 +53,13 @@ inspect(ruleset)
 NewDF$Likelihood_Recommend_H <- df$Likelihood_Recommend_H
 
 #Detractors are numbers of 6 or less
-Detractors <- sum(NewDF$Likelihood_Recommend_H < 7)
+Detractors <- (NewDF$Likelihood_Recommend_H < 7)
 Detractors
 
-NewDF$Detractors <- data.frame(Detractors)
+NewDF$Detractors <- (Detractors)
 NewDF$Detractors
 
+#Detractors <-Detractors)
 test2 <- factor(NewDF[ ,6])
 
 NewDF$Likelihood_Recommend_H <- test2
