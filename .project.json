@@ -10,7 +10,24 @@
             "name": "clean.R"
         },
         {
-            "name": "work.R"
+            "name": "LM_LTR.R",
+            "task_status": "not started",
+            "assigned_to": "not assigned"
+        },
+        {
+            "name": "scatter_LTR.png"
+        },
+        {
+            "name": "ModelTest.R"
+        },
+        {
+            "name": "SVM.R"
+        },
+        {
+            "name": "IntAsRules.R"
+        },
+        {
+            "name": "Plot.png"
         }
     ],
     "edges": [
@@ -21,6 +38,30 @@
         {
             "source": "clean.R",
             "target": "data.csv"
+        },
+        {
+            "source": "data.csv",
+            "target": "LM_LTR.R"
+        },
+        {
+            "source": "LM_LTR.R",
+            "target": "scatter_LTR.png"
+        },
+        {
+            "source": "data.csv",
+            "target": "ModelTest.R"
+        },
+        {
+            "source": "data.csv",
+            "target": "SVM.R"
+        },
+        {
+            "source": "data.csv",
+            "target": "IntAsRules.R"
+        },
+        {
+            "source": "IntAsRules.R",
+            "target": "Plot.png"
         }
     ]
 }
