@@ -35,12 +35,13 @@ cutPoint2_3
 #Creating a train dataframe
 trainData <- ch[randomIndex[1:cutPoint2_3],]
 str(trainData)
-
+length(trainData$NPS_Type)
 #Creating a test dataframe
 testData <- ch[randomIndex[(cutPoint2_3+1):dim(ch)[1]],]
 str(testData)
+length(testData$NPS_Type)
 
-svmOutput <- ksvm(NPS_Type ~ ., data=trainData, C=40, prob.model=TRUE)
+svmOutput <- ksvm(NPS_Type ~ ., data=trainData, kernel="rbfdot", kpar="automatic", C=40, prob.model=TRUE)
 
 svmOutput
 
