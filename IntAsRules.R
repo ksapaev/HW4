@@ -11,7 +11,6 @@ df <- read.csv('data.csv')
 ## start writing your R code from here
 library(arulesViz)
 library(arules)
-library(arulesViz)
 #Generate Interesting Association Rule using bellow 
 
 summary(df$LENGTH_OF_STAY_C)
@@ -54,12 +53,13 @@ inspect(ruleset)
 NewDF$Likelihood_Recommend_H <- df$Likelihood_Recommend_H
 
 #Detractors are numbers of 6 or less
-Detractors <- sum(NewDF$Likelihood_Recommend_H < 7)
+Detractors <- (NewDF$Likelihood_Recommend_H < 7)
 Detractors
 
-NewDF$Detractors <- data.frame(Detractors)
+NewDF$Detractors <- (Detractors)
 NewDF$Detractors
 
+#Detractors <-Detractors)
 test2 <- factor(NewDF[ ,6])
 
 NewDF$Likelihood_Recommend_H <- test2
