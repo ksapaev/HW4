@@ -150,9 +150,9 @@ LTR2test
 #predictions were correct - in terms of  predicting a detractorfunction 
 
 #The model is LinMod2
-Predictions <- function(sc) {
-  Act_LTR <- sc$Likelihood_Recommend_H
-  Prediction <- predict(LinMod2, sc, type="response")
+Predictions <- function(P) {
+  Act_LTR <- P$Likelihood_Recommend_H
+  Prediction <- predict(LinMod2, P, type="response")
   ActDet <- sum(Act_LTR<7)
   PredDet <- sum(Prediction<7 & Act_LTR<7)
   PredDet/ActDet
@@ -165,8 +165,8 @@ Predictions(sc)*100
 #Creating 1000 sample of indexes
 randomIndex <- sample(1:dim(sc)[1], 1000, replace=FALSE, prob=NULL)
 
-#Calculating percentage of TRUEly predicted Detractors which is 59.83% for the sample
-Predictions(sc[randomIndex,])
+#Calculating percentage of TRUEly predicted Detractors which is 63.83% for the sample
+Predictions(sc[randomIndex,])*100
 
 
 ## end your R code and logic 
