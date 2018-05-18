@@ -24,7 +24,7 @@
             "name": "IntAsRules.R"
         },
         {
-            "name": "Top10.png"
+            "name": "Top10Support.png"
         }
     ],
     "edges": [
@@ -54,7 +54,7 @@
         },
         {
             "source": "IntAsRules.R",
-            "target": "Top10.png"
+            "target": "Top10Support.png"
         }
     ]
 }
