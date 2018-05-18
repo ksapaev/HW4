@@ -24,7 +24,16 @@
             "name": "IntAsRules.R"
         },
         {
-            "name": "Plot.png"
+            "name": "Top10Support.png"
+        },
+        {
+            "name": "Top10Confidence.png"
+        },
+        {
+            "name": "Top10SupportDet.png"
+        },
+        {
+            "name": "Top10ConfidenceDet.png"
         }
     ],
     "edges": [
@@ -54,7 +63,19 @@
         },
         {
             "source": "IntAsRules.R",
-            "target": "Plot.png"
+            "target": "Top10Support.png"
+        },
+        {
+            "source": "IntAsRules.R",
+            "target": "Top10Confidence.png"
+        },
+        {
+            "source": "IntAsRules.R",
+            "target": "Top10SupportDet.png"
+        },
+        {
+            "source": "IntAsRules.R",
+            "target": "Top10ConfidenceDet.png"
         }
     ]
 }
