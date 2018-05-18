@@ -96,8 +96,9 @@ dev.off()
 
 ####################################
 ##### write output file ############
-# add your R code to write Top10.png
+# add your R code to write Top10Confidence.png
 ####################################
+
 
 
 
