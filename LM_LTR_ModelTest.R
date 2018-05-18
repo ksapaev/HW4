@@ -36,6 +36,7 @@ dev.off()
 
 #Creating a new dataframe by omitting NAs from 'staff cared' column
 sc <- hc[!is.na(hc$Staff_Cared_H),] 
+rownames(sc) <- NULL
 
 # Running linear regression model with 1 independent variable
 LinMod <- lm(formula=Likelihood_Recommend_H ~ Condition_Hotel_H, data=sc)
