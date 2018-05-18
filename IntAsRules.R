@@ -9,42 +9,48 @@ df <- read.csv('data.csv')
 ####################################
 
 ## start writing your R code from here
+library(ggplot2)
 library(arulesViz)
 library(arules)
-#Generate Interesting Association Rule using bellow 
 
-summary(df$LENGTH_OF_STAY_C)
-df$Guest_Country_H
-df$Gender_H
-df$Age_Range_H
-df$GP_Tier
-head(df)
+############
+
+#Part E:1
+
+#Cleaning the dataframe
+df <- df[!is.na(df$LENGTH_OF_STAY_C),] 
+df <- df[!is.na(df$Guest_Country_H),] 
+df <- df[!is.na(df$Gender_H),] 
+df <- df[!is.na(df$Age_Range_H),]
+df <- df[!is.na(df$GP_Tier),]
+df <- df[!is.na(df$NPS_Type),]
+#Generate Interesting Association Rule using below 
 #Create Dataframe with appropriate columns
-NewDF <- data.frame(df$LENGTH_OF_STAY_C, df$Guest_Country_H,
-df$Gender_H, df$Age_Range_H, df$GP_Tier)
+NewDF <- data.frame(LengthOfStay=df$LENGTH_OF_STAY_C, GuestCountry=df$Guest_Country_H, Gender=df$Gender_H, AgeRange=df$Age_Range_H, GPTier=df$GP_Tier)
 #NewDF
 #patterns <- random.patterns(df$LENGTH_OF_STAY_C = 1000);
+str(NewDF)
+#Convert column 'Length of stay' into a factor
+NewDF$LengthOfStay <- factor(NewDF[ ,1])
 
-#Convert column 1 into a factor
-test1 <- factor(NewDF[ ,1])
 
-NewDF$df.LENGTH_OF_STAY_C <- test1
 
 #View Rules
-ruleset <- apriori(NewDF, parameter =list(support=0.01,confidence=0.5))
+rules <- apriori(NewDF, parameter = list(support=0.01,confidence=0.5))
 
-summary(ruleset)
+#Sorting rules by support and confidence    
+top.support <- sort(rules, decreasing = TRUE, na.last = NA, by = "support")
+top.confidence <- sort(rules, decreasing = TRUE, na.last = NA, by = "confidence")
 
 #Show the top 10 rules
+inspect(head(top.support, 10))
 
-head(ruleset)
+
+
+
 plot(ruleset)
 
-#Show top 10 rules 
-top10 <- inspect(sort(ruleset) [1:10])
-top10
 
-inspect(ruleset)
 
 #Generate rules that predict if someone will be a detractor
 
