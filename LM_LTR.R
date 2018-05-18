@@ -161,6 +161,10 @@ Predictions <- function(P) {
 Predictions(sc)*100
 
 
+#############
+
+#Part B: 4
+
 #Testing with random sample of 1,000
 #Creating 1000 sample of indexes
 randomIndex <- sample(1:dim(sc)[1], 1000, replace=FALSE, prob=NULL)
