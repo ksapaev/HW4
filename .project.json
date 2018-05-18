@@ -10,15 +10,12 @@
             "name": "clean.R"
         },
         {
-            "name": "LM_LTR.R",
+            "name": "LM_LTR_ModelTest.R",
             "task_status": "not started",
             "assigned_to": "not assigned"
         },
         {
             "name": "scatter_LTR.png"
-        },
-        {
-            "name": "ModelTest.R"
         },
         {
             "name": "SVM.R"
@@ -41,15 +38,11 @@
         },
         {
             "source": "data.csv",
-            "target": "LM_LTR.R"
+            "target": "LM_LTR_ModelTest.R"
         },
         {
-            "source": "LM_LTR.R",
+            "source": "LM_LTR_ModelTest.R",
             "target": "scatter_LTR.png"
-        },
-        {
-            "source": "data.csv",
-            "target": "ModelTest.R"
         },
         {
             "source": "data.csv",
