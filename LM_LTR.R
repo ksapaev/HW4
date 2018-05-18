@@ -99,11 +99,8 @@ ifelse(LTR2<7, "Detractor", "Not Detractor")
 #PPart B: 1
 
 #Create dataframe of just the 10th row
-test <- sc[ 10, ]
-test
+test <- data.frame(sc[10,])
 
-LinMod <- lm(formula=Likelihood_Recommend_H ~ Condition_Hotel_H, data=hc)
-LinMod2 <- lm(formula=Likelihood_Recommend_H ~ Condition_Hotel_H + Staff_Cared_H, data=sc)
 
 #Test/predict the dataframe
 predict(LinMod, test, type="response")
