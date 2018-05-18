@@ -25,6 +25,9 @@
         },
         {
             "name": "Plot.png"
+        },
+        {
+            "name": "Top10.png"
         }
     ],
     "edges": [
