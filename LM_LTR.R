@@ -149,33 +149,24 @@ LTR2test
 #of staff cares and a vector of actual LTR; and returns how many of the model
 #predictions were correct - in terms of  predicting a detractorfunction 
 
-#The model is LinMod and LinMod2
-#Vector of Conditions
-Conditions <- sc$Likelihood_Recommend_H
-
-#Vector of Staff Cares
-Staff_Cares <- sc$Staff_Cared_H
- 
-#Vector of Actual LTR
-Act_LTR <- sc$Likelihood_Recommend_H
-
-
-#Function that takes into account all these Vectors, have to use 
-VS <- c(Conditions, Staff_Cares)
-
-
-predict(LTR1, Conditions, type="response")
-
-df$NPS_Type
-str(df$NPS_Type)
-df$NPS_Type <- as.character(df$NPS_Type)
-df$NPS_Type[df$NPS_Type != "Detractor"] <- "NotDetractor"
-df$NPS_Type <- as.factor(df$NPS_Type)
+#The model is LinMod2
+Predictions <- function(sc) {
+  Act_LTR <- sc$Likelihood_Recommend_H
+  Prediction <- predict(LinMod2, sc, type="response")
+  ActDet <- sum(Act_LTR<7)
+  PredDet <- sum(Prediction<7 & Act_LTR<7)
+  PredDet/ActDet
+}
+#Calculating percentage of TRUEly predicted Detractors which is 61.85%
+Predictions(sc)*100
 
 
 #Testing with random sample of 1,000
+#Creating 1000 sample of indexes
+randomIndex <- sample(1:dim(sc)[1], 1000, replace=FALSE, prob=NULL)
 
-sample(df$NPS_Type, 1000, replace = FALSE, prob = NULL)
+#Calculating percentage of TRUEly predicted Detractors which is 59.83% for the sample
+Predictions(sc[randomIndex,])
 
 
 ## end your R code and logic 
