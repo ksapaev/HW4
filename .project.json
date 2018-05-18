@@ -25,6 +25,9 @@
         },
         {
             "name": "Top10Support.png"
+        },
+        {
+            "name": "Top10Confidence.png"
         }
     ],
     "edges": [
