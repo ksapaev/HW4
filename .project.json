@@ -18,9 +18,6 @@
             "name": "scatter_LTR.png"
         },
         {
-            "name": "ModelTest.R"
-        },
-        {
             "name": "SVM.R"
         },
         {
@@ -46,10 +43,6 @@
         {
             "source": "LM_LTR.R",
             "target": "scatter_LTR.png"
-        },
-        {
-            "source": "data.csv",
-            "target": "ModelTest.R"
         },
         {
             "source": "data.csv",
