@@ -45,12 +45,10 @@ top.confidence <- sort(rules, decreasing = TRUE, na.last = NA, by = "confidence"
 #Show the top 10 rules
 inspect(head(top.support, 10))
 
-plot(rules)
+plot(head(top.support, 10)
+     
 
 #Part E:2
-
-
-
 
 
 #Generate rules that predict if someone will be a detractor
