@@ -34,8 +34,11 @@ dev.off()
 ##################
 #Part A: 2
 
+#Creating a new dataframe by omitting NAs from 'staff cared' column
+sc <- hc[!is.na(hc$Staff_Cared_H),] 
+
 # Running linear regression model with 1 independent variable
-LinMod <- lm(formula=Likelihood_Recommend_H ~ Condition_Hotel_H, data=hc)
+LinMod <- lm(formula=Likelihood_Recommend_H ~ Condition_Hotel_H, data=sc)
 summary(LinMod)
 
 
@@ -46,8 +49,7 @@ summary(LinMod)
 ##################
 #Part A: 3
 
-#Creating a new dataframe by omitting NAs from 'staff cared' column
-sc <- hc[!is.na(hc$Staff_Cared_H),] 
+
 
 # Running linear regression model with 2 independent variables
 LinMod2 <- lm(formula=Likelihood_Recommend_H ~ Condition_Hotel_H + Staff_Cared_H, data=sc)
@@ -60,10 +62,10 @@ summary(LinMod2)
 ##################
 #Part A: 4
 
-# R2 for the first model is 0.5009
+# R2 for the first model is 0.4501
 # R2 for the second model is 0.5743
 #Linear models look like:
-# y1 = 0.85196 + 0.87941 * Hotel Condition 
+# y1 = 0.783595 + 0.880256 * Hotel Condition 
 # y2 = -1.3016 + 0.618915 * Hotel Condition + 0.49269 * Staff Cared
 
 #In terms of variations that models explain I prefer second model.
@@ -96,31 +98,52 @@ ifelse(LTR2<7, "Detractor", "Not Detractor")
 
 ####################################################################
 
-#PPart B: 1
+#Part B: 1
 
 #Create dataframe of just the 10th row
-test <- data.frame(sc[10,])
+test <- sc[10,]
 
 
-#Test/predict the dataframe
-predict(LinMod, test, type="response")
+#Test/predict the dataframe with 10th element. Result is Not Detractor for both.
+LTR1test <- predict(LinMod, test, type="response")
+ifelse(LTR1test<7, "Detractor", "Not Detractor")
 
-predict(LinMod2, test, type="response")
+LTR2test <- predict(LinMod2, test, type="response")
+ifelse(LTR2test<7, "Detractor", "Not Detractor")
 
-#The prediction was close but not exact to the actual value 
-#LinMod2 was the closest with a number of 9.2 while LinMod had 8.7 which also was not too far off
+test$Likelihood_Recommend_H
+LTR1test
+LTR2test
+#The prediction was close but not exact to the actual value of LTR=10 
+#LinMod2 was the closest with a number of 9.2 while LinMod had 8.71
 
+
+##################
+
+#Part B: 2
 #Re-do test with the 1065th Element of the dataframe
 
 #Create dataframe of just the 1065th row
-test2 <- sc[ 1065, ]
-test2
+test2 <- sc[1065, ]
 
-#Test/predict the dataframe with 1065th element
-predict(LinMod, test2, type="response")
+#Test/predict the dataframe with 1065th element. Result is Detractor for both.
+LTR1test <- predict(LinMod, test2, type="response")
+ifelse(LTR1test<7, "Detractor", "Not Detractor")
+
+LTR2test <- predict(LinMod2, test2, type="response")
+ifelse(LTR2test<7, "Detractor", "Not Detractor")
+
+test2$Condition_Hotel_H
+LTR1test
+LTR2test
+
+#The prediction was incorrect. The actual value of LTR=7 (Passive) where prediction resulted Detractor
+#LinMod was the closest with a number of 6.95 while LinMod2 had 5.49
 
 
-predict(LinMod2, test2, type="response")
+#############
+
+#Part B: 3
 
 #function that takes the model, a vector of conditions, and vector
 #of staff cares and a vector of actual LTR; and returns how many of the model
@@ -128,31 +151,20 @@ predict(LinMod2, test2, type="response")
 
 #The model is LinMod and LinMod2
 #Vector of Conditions
-
 Conditions <- sc$Likelihood_Recommend_H
-Conditions
-#Vector of Staff Cares
 
+#Vector of Staff Cares
 Staff_Cares <- sc$Staff_Cared_H
-Staff_Cares  
+ 
 #Vector of Actual LTR
 Act_LTR <- sc$Likelihood_Recommend_H
-Act_LTR
+
 
 #Function that takes into account all these Vectors, have to use 
+VS <- c(Conditions, Staff_Cares)
 
 
-
-#Checking whether predicted LTR for the first model is detractor or not
-ifelse(LTR1<7, "Detractor", "Not Detractor")
-
-#Checking whether predicted LTR for the second model is detractor or not
-ifelse(LTR2<7, "Detractor", "Not Detractor")
-
-Vs <- c(Conditions, Staff_Cares)
-Vs
-
-predict(LTR1, Vs, type="response")
+predict(LTR1, Conditions, type="response")
 
 df$NPS_Type
 str(df$NPS_Type)
