@@ -58,6 +58,10 @@
         {
             "source": "IntAsRules.R",
             "target": "Plot.png"
+        },
+        {
+            "source": "IntAsRules.R",
+            "target": "Top10.png"
         }
     ]
 }
