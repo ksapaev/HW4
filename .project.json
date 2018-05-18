@@ -24,9 +24,6 @@
             "name": "IntAsRules.R"
         },
         {
-            "name": "Plot.png"
-        },
-        {
             "name": "Top10.png"
         }
     ],
@@ -54,10 +51,6 @@
         {
             "source": "data.csv",
             "target": "IntAsRules.R"
-        },
-        {
-            "source": "IntAsRules.R",
-            "target": "Plot.png"
         },
         {
             "source": "IntAsRules.R",
