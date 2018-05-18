@@ -72,6 +72,10 @@
         {
             "source": "IntAsRules.R",
             "target": "Top10SupportDet.png"
+        },
+        {
+            "source": "IntAsRules.R",
+            "target": "Top10ConfidenceDet.png"
         }
     ]
 }
