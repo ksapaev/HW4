@@ -45,10 +45,11 @@ top.confidence <- sort(rules, decreasing = TRUE, na.last = NA, by = "confidence"
 #Show the top 10 rules
 inspect(head(top.support, 10))
 
+plot(rules)
+
+#Part E:2
 
 
-
-plot(ruleset)
 
 
 
