@@ -58,6 +58,10 @@
         {
             "source": "IntAsRules.R",
             "target": "Top10Support.png"
+        },
+        {
+            "source": "IntAsRules.R",
+            "target": "Top10Confidence.png"
         }
     ]
 }
